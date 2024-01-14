@@ -7,8 +7,8 @@
 #define EXPLOSION_LOOPS 500
 #define PREFIRE_LOOPS   1024
 #define REST_MAX        128
-#define TAP_HARDNESS    126
-#define BRIGHTNESS      128
+#define TAP_HARDNESS    127
+#define BRIGHTNESS      255
 
 Adafruit_CPlay_NeoPixel strip = Adafruit_CPlay_NeoPixel(NUM_PIXELS, NEOPIX_PIN, NEO_GRBW + NEO_KHZ800);
 
@@ -47,8 +47,6 @@ void Display(){
   if (!req_update){
     return;
   }
-  CircuitPlayground.clearPixels();
-  strip.clear();
   for (int pixel = 0; pixel < ONBOARD_PIXELS; pixel++){
     CircuitPlayground.setPixelColor(pixel, Colors[pixel*3], Colors[pixel*3+1], Colors[pixel*3+2]);
   }
@@ -71,7 +69,7 @@ void Rest(){
     Colors[i*3] = stage;
   }
   Display();
-  delay(250);
+  delay(100);
 }
 
 void Accel(){
